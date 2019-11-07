@@ -30,6 +30,7 @@ class ReminderEmailSender
     {
         $user = $event->user;
         $reminder = $event->reminder;
+
         $detail = [
             'id' => $user->id,
             'email' => $user->email,

@@ -27,7 +27,7 @@
         <div class="row w-100">
           <div class="col-lg-4 mx-auto">
             <div class="auto-form-wrapper">
-              <form action="{{ route('reminders.update',$id,$code) }}" method="POST" autocomplete="off">
+              <form action="{{ url('reset-password/'.$id.'/'.$code) }}" method="POST" autocomplete="off">
                 @csrf
                 <div class="form-group">
                   <label class="label">Password</label>

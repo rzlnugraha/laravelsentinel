@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'null'),
+        'address' => env('MAIL_FROM_ADDRESS', 'laravelsentinel@mail.com'),
         'name' => env('MAIL_FROM_NAME', 'Rizal Nugraha'),
     ],
 

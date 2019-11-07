@@ -7,6 +7,8 @@ use App\User;
 use Illuminate\Http\Request;
 use Validator, Event, Session, Reminder, Sentinel;
 use Alert;
+use App\Events\ReminderEvent;
+
 
 class RemindersController extends Controller
 {
@@ -22,7 +24,7 @@ class RemindersController extends Controller
         if ($getUser) {
             $user = Sentinel::findById($getUser->id);
             ($reminder = Reminder::exists($user)) || ($reminder = Reminder::create($user));
-            Event::fire(new ReminderEvent($user, $reminder));
+            Event::dispatch(new ReminderEvent($user, $reminder));
             Alert::success('Silahkan cek email','Success');
         } else {
             Alert::error('Email not valid','Error');
@@ -34,13 +36,13 @@ class RemindersController extends Controller
     {
         $user = Sentinel::findById($id);
         if (Reminder::exists($user, $code)) {
-            return view('emails.edit', compact('id','code'));
+            return view('emails.edit', ['id' => $id, 'code' => $code]);
         } else {
             return redirect(url('/'));
         }
     }
 
-    public function update(ReminderRequest $request, $id, $code)
+    public function update($id, $code, ReminderRequest $request)
     {
         $user = Sentinel::findById($id);
         $reminder = Reminder::exists($user, $code);

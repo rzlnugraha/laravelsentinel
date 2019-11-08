@@ -1,5 +1,3 @@
-import { format } from "path";
-
 // Search Article
 $(document).ready(function (){
     $('.search').on('keyup', function() {
@@ -22,12 +20,9 @@ $(document).ready(function (){
             }
         });
     });
-});
-
-// Add Komentar
-$(document).ready(function (){
+    
+    // Add Komentar
     $('#save').on('click', function(){
-        console.log('Halo');
         $.ajax({
             url : '/komentar',
             type : 'POST',
@@ -35,7 +30,8 @@ $(document).ready(function (){
             data : $('#add-komentar').serialize(),
             success : function(data) {
                 $('.data-komentar').html(data['view']);
-                swal("Success!", "Berhasil namabh!", "success");
+                swal("Success!", "Berhasil nambah boy!");
+                $('#add-komentar').trigger("reset");
             },
             error : function(xhr, status) {
                 console.log(xhr.error + "ERROR MANG " + status);

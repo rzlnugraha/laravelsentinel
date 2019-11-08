@@ -62,7 +62,7 @@
                             <div class="form-group col-md-12">
                                 <input type="hidden" id="artikel_id" name="article_id" value="{{ $article->id }}">
                                 <label for="author" class="control-label">Nama</label>
-                                <input type="text" name="user" id="author" class="form-control {{ $errors->has('user') ? ' is-invalid' : '' }}" placeholder="Nama Antum">
+                                <input type="text" name="user" id="author" class="form-control {{ $errors->has('user') ? ' is-invalid' : '' }}" placeholder="Nama Antum" value="{{ Sentinel::getUser()->first_name }} {{ Sentinel::getUser()->last_name }}">
                                 {!! $errors->first('user','<span class="invalid-feedback">:messages</span>') !!}
                             </div>
                             <div class="form-group col-md-12">
@@ -79,6 +79,7 @@
                         <h1 class="card-title mb-4">Komentar Netizen</h2><hr>
                         @include('artikel.komentar')
                     </div>
+                    {{ $comments->links() }}
                 </div>
             </div>
             </div>

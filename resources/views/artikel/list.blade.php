@@ -8,7 +8,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach ($artikel as $item)
+    @forelse ($artikel as $item)
     <tr>
         <td>{{ $item->title }}</td>
         <td>{{ str_limit($item->content, $limit=20, $end='...') }}</td>
@@ -22,5 +22,9 @@
             </form>
         </td>
     </tr>
-    @endforeach
+    @empty
+    <tr>
+        <td colspan="6"><center><strong>Data Tidak Ditemukan</strong></center></td>
+    </tr>
+    @endforelse
 </tbody>

@@ -11,7 +11,7 @@ Route::group(['middleware' => 'sentinel'], function () {
     Route::resource('/article', 'ArticlesController')->except(['create']);
     Route::get('cari_artikel','ArticlesController@cari')->name('cariartikel');
 
-    Route::post('komentar','CommentsController@store')->name('komentar.store');
+    Route::post('/komentar','CommentsController@store')->name('komentar.store');
 });
 
 Route::get('forgot-password','RemindersController@create')->name('reminders.create');

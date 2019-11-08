@@ -19,7 +19,7 @@ class ArticlesController extends Controller
             $artikel = Article::where('title', 'like', '%' . $request->cari . '%')
                 ->orWhere('author', 'like', '%' . $request->cari . '%')->paginate(5);
             $view = (String) view('artikel.list')->with('artikel',$artikel)->render();
-            return response()->json(['view' =>$view, 'status' => 'success']);
+            return response()->json(['view' => $view, 'status' => 'success']);
         }
         $artikel = Article::latest()->paginate(5);
         return view('artikel.index', compact('artikel'));
@@ -57,8 +57,8 @@ class ArticlesController extends Controller
     public function show($id)
     {
         $article = Article::findOrFail($id);
-        $comment = Article::findOrFail($id)->comments;
-        return view('artikel.show', compact('article','comment'));
+        $comments = Article::findOrFail($id)->comments()->latest()->paginate(5);
+        return view('artikel.show', compact('article','comments'));
     }
 
     /**
@@ -105,7 +105,6 @@ class ArticlesController extends Controller
         $cari = $request->cari;
         if (!empty($cari)) {
             $artikel = Article::where('title', 'like', '%' . $cari . '%')
-                ->orWhere('content', 'like', '%' . $cari . '%')
                 ->orWhere('author', 'like', '%' . $cari . '%')->paginate(5);
         } else {
             $artikel = Article::paginate(5);

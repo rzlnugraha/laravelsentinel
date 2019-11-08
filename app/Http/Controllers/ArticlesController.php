@@ -13,8 +13,14 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            $artikel = Article::where('title', 'like', '%' . $request->cari . '%')
+                ->orWhere('author', 'like', '%' . $request->cari . '%')->paginate(5);
+            $view = (String) view('artikel.list')->with('artikel',$artikel)->render();
+            return response()->json(['view' =>$view, 'status' => 'success']);
+        }
         $artikel = Article::latest()->paginate(5);
         return view('artikel.index', compact('artikel'));
     }
@@ -48,9 +54,11 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show($id)
     {
-        return view('artikel.show', compact('article'));
+        $article = Article::findOrFail($id);
+        $comment = Article::findOrFail($id)->comments;
+        return view('artikel.show', compact('article','comment'));
     }
 
     /**

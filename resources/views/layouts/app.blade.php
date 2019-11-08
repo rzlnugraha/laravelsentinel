@@ -56,6 +56,7 @@
   <!-- container-scroller -->
 
   <!-- plugins:js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="{{ asset('assets') }}/vendors/js/vendor.bundle.base.js"></script>
   <script src="{{ asset('assets') }}/vendors/js/vendor.bundle.addons.js"></script>
   <!-- endinject -->
@@ -68,6 +69,7 @@
   <!-- Custom js for this page-->
   <script src="{{ asset('assets') }}/js/dashboard.js"></script>
   <!-- End custom js for this page-->
+  <script src="{{ asset('js/ajax.js') }}"></script>
 
   {{-- Sweet Aleret --}}
   <script src="{{ asset('sweetalert.min.js') }}"></script>

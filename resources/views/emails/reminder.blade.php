@@ -35,7 +35,7 @@
                         Jangan diantep email yang saya kirim ini, takutnya ada batur yang malah ngeganti..
                         <p>
                             Kalo mau ganti, klik aja ini 
-                            <a href="{{ route('reminders.edit',$detail['id'].'/'.$detail['code']) }}">
+                            <a href="{{ url('reset-password/'.$detail['id'].'/'.$detail['code']) }}">
                             Reset</a>
                         </p>
                     </div>

@@ -31,7 +31,7 @@
                         </div>
                         <div class="col-4 d-flex">
                         <small class="mb-0 mr-2 text-muted text-muted">Created at :</small>
-                        <small class="Last-responded mr-2 mb-0 text-muted text-muted">{{ $book->created_at->diffForHumans() }}</small>
+                        <small class="Last-responded mr-2 mb-0 text-muted text-muted">{{ empty($book->created_at) ? 'Data dari seeder' : $book->created_at->diffForHumans() }}</small>
                         </div>
                     </div>
                     </div>

@@ -1,4 +1,5 @@
 <div class="form-group">
+    <input type="hidden" name="article_id" id="article_id">
     <label for="title">Judul Artikel</label>
     <input type="text" class="form-control {{ $errors->has('title') ? ' is-invalid' : ''}}" id="title" placeholder="Judul Artikel" name="title" value="{{ old('title') ?? $article->title }}">
     {!! $errors->first('title','<span class="invalid-feedback">:message</span>') !!}
@@ -14,5 +15,5 @@
     {!! $errors->first('author','<span class="invalid-feedback">:message</span>') !!}
 </div>
 <div class="modal-footer">
-    <button type="submit" class="btn btn-primary">{{ $button }}</button>
+    <button type="{{ $type }}" class="btn btn-primary" id="button-edit-artikel">{{ $button }}</button>
 </div>

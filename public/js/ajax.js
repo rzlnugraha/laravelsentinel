@@ -20,9 +20,27 @@ $(document).ready(function (){
             }
         });
     });
+
+    // Search Book
+    $('#cari').on('keyup', function() {
+        $.ajax({
+            url : '/book',
+            type : 'GET',
+            dataType : 'json',
+            data : {
+                'cari' : $('#cari').val()
+            },
+            success : function(data) {
+                $('.data-buku').html(data['view']);
+            },
+            error : function(xhr, status) {
+                console.log(xhr.error + "ERROR : " + status);
+            }
+        });
+    });
     
     // Add Komentar
-    $('#save').on('click', function(){
+    $('#save').on('click', function() {
         $.ajax({
             url : '/komentar',
             type : 'POST',
@@ -41,4 +59,48 @@ $(document).ready(function (){
             }
         });
     });
+
+    // Cari Task
+    $('#cari-task').on('keyup', function () {
+        $.ajax({
+           url : '/task',
+           type : 'GET',
+           dataType : 'json',
+           data : {
+               'cari' : $('#cari-task').val()
+           },
+           success : function (data) {
+               $('.data-task').html(data['view']);
+           },
+           error : function (xhr, status) {
+               console.log(xhr.status + "ERROR : " + status);
+           },
+           complete : function () {
+               alreadyloading : false
+           }
+        });
+    });
+
+    // $('#button-edit-artikel').on('click', function () {
+        // $.ajax({
+        //    url : '/' 
+        // });
+    // });
+
+    // Add Article
+    // $('#tambah').on('click', function() {
+    //     $.ajax({
+    //         url : '/article',
+    //         type : 'POST',
+    //         dataType : 'json',
+    //         data : $('#form-article').serialize(),
+    //         success : function(data) {
+    //             $('.data-buku').html(['view']);
+    //             swal("Success!","Berhasil menambah data");
+    //         },
+    //         error : function(xhr, status) {
+    //             console.log(xhr.error + "ERROR : " + status);
+    //         }
+    //     });
+    // });
 });

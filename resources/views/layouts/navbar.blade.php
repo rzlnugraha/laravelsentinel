@@ -37,6 +37,12 @@
                     <span class="menu-title">Artikel</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('task.index') }}">
+                    <i class="menu-icon mdi mdi-file-document-box"></i>
+                    <span class="menu-title">Task</span>
+                </a>
+            </li>
         @else
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">

@@ -19,9 +19,8 @@
             <form class="form-inline" style="margin-left:620px">
               <div class="form-group">
                 <label for="cari" class="control-label ml-5 mr-3"><strong>Cari</strong></label>
-                <input style="border-radius:5px;" class="search" type="text" name="cari" id="cari" class="form-control" placeholder="Cari">
+                <input style="border-radius:5px;" type="text" name="cari" id="cari" class="form-control search" placeholder="Cari">
               </div>
-              {{-- <button class="btn btn-primary btn-xs" type="submit">Cari</button> --}}
             </form>
           </li>
         </ul>
@@ -48,7 +47,8 @@
             @csrf
             @include('artikel.form', [
                 'article' => new App\Article,
-                'button' => 'Save'
+                'button' => 'Save',
+                'type' => 'submit'
             ])
         </form>
       </div>

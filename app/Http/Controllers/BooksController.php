@@ -14,8 +14,17 @@ class BooksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            $buku = Book::where('judul_buku','like','%' . $request->cari . '%')
+                ->orWhere('pengarang','like','%' . $request->cari . '%')->latest()->paginate(5);
+            $view = (String) view('buku.data_buku',compact('buku'))->render();
+            return response()->json([
+                'view' => $view,
+                'status' => 'success'
+            ]);
+        }
         $buku = Book::latest()->paginate(5);
         return view('buku.index', compact('buku'));
     }

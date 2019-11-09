@@ -15,6 +15,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
     protected $table = 'users';
     /**
      * The attributes that are mass assignable.

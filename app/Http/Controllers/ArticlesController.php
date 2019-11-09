@@ -17,7 +17,7 @@ class ArticlesController extends Controller
     {
         if ($request->ajax()) {
             $artikel = Article::where('title', 'like', '%' . $request->cari . '%')
-                ->orWhere('author', 'like', '%' . $request->cari . '%')->paginate(5);
+                ->orWhere('author', 'like', '%' . $request->cari . '%')->latest()->paginate(5);
             $view = (String) view('artikel.list')->with('artikel',$artikel)->render();
             return response()->json(['view' => $view, 'status' => 'success']);
         }
@@ -84,7 +84,7 @@ class ArticlesController extends Controller
         $article = Article::findOrFail($id);
         $article->update($request->all());
         Alert::success('Berhasil merubah data','Update');
-        return redirect()->route('article.index');
+        return redirect()->back();
     }
 
     /**

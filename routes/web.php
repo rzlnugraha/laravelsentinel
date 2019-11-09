@@ -3,15 +3,21 @@
 Route::get('/', 'UsersController@index')->name('index');
 
 Route::group(['middleware' => 'sentinel'], function () {
+    // Index awal login
     Route::get('home','UsersController@home')->name('home');
     
+    // Buku
     Route::resource('book', 'BooksController')->except(['create']);
     Route::get('cari_buku','BooksController@cari')->name('cari');
     
+    // Artikel
     Route::resource('/article', 'ArticlesController')->except(['create']);
     Route::get('cari_artikel','ArticlesController@cari')->name('cariartikel');
 
+    // Komentar
     Route::post('/komentar','CommentsController@store')->name('komentar.store');
+
+    Route::resource('/task', 'TasksController');
 });
 
 Route::get('forgot-password','RemindersController@create')->name('reminders.create');

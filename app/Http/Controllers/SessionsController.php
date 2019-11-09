@@ -26,7 +26,7 @@ class SessionsController extends Controller
             Alert::success('Assalamualaikum ' . $user->first_name . ' ' . $user->last_name, 'Masuk');
             return redirect(route('home'));
         } else {
-            Alert::error('Gagal Login', 'Error');
+            Alert::error('Gagal, Password atau Email salah!', 'Error');
             return view('auth.login');
         }
     }
@@ -34,7 +34,7 @@ class SessionsController extends Controller
     public function logout()
     {
         Sentinel::logout();
-        Alert::success('Berhasil logout', 'Logout');
+        Alert::info('Dadah, login lagi ya!', 'Logout');
         return redirect('/');
     }
 }

@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
 
     ],
 
@@ -231,6 +232,7 @@ return [
         'Reminder' => Cartalyst\Sentinel\Laravel\Facades\Reminder::class, 
         'Sentinel' => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ],
 

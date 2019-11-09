@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\TaskRequest;
 use App\Task;
 use App\User;
-use Sentinel, Alert;
+use Sentinel, Alert, DataTables;
 
 class TasksController extends Controller
 {
@@ -97,5 +97,20 @@ class TasksController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function dataTable()
+    {
+        $model = Task::query();
+        return DataTables::of($model)
+            ->addColumn('action', function ($model) {
+                return view('task._action', [
+                    'model' => $model,
+                    'url_destroy' => route('task.destroy', $model->id)
+                ]);
+            })
+            ->addIndexColumn()
+            ->rawColumns(['action'])
+            ->make(true);
     }
 }

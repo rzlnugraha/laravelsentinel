@@ -1,0 +1,1 @@
+<a href="{{ $url_destroy }}" class="btn-delete" title="{{ $model->name }}"><i class="mdi mdi-delete text-danger"></i></a>

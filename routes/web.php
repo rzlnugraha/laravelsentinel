@@ -18,6 +18,7 @@ Route::group(['middleware' => 'sentinel'], function () {
     Route::post('/komentar','CommentsController@store')->name('komentar.store');
 
     Route::resource('/task', 'TasksController');
+    Route::get('/table/task','TasksController@dataTable')->name('table.task');
 });
 
 Route::get('forgot-password','RemindersController@create')->name('reminders.create');

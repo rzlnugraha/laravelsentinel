@@ -16,7 +16,7 @@
   <!-- endinject -->
   
   {{-- DataTable --}}
-  <link rel="stylesheet" href="{{ asset('assets') }}/vendors/datatables/datatables.min.css">
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('assets') }}/css/style.css">
@@ -70,6 +70,8 @@
   <!-- Custom js for this page-->
   <script src="{{ asset('assets') }}/js/dashboard.js"></script>
   <!-- End custom js for this page-->
+
+  <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
   
   {{-- Ajax buatan sendiri --}}
   <script src="{{ asset('js/ajax.js') }}"></script>

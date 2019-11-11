@@ -24,7 +24,11 @@ class SessionsController extends Controller
     {
         if ($user = Sentinel::authenticate($req->all())) { // Buat cek login authenticate
             Alert::success('Assalamualaikum ' . $user->first_name . ' ' . $user->last_name, 'Masuk');
-            return redirect(route('home'));
+            if (Sentinel::getUser()->roles()->first()->slug == 'admin') { 
+                return redirect(route('dashboard'));
+            } else {
+                return redirect(route('home'));
+            }
         } else {
             Alert::error('Gagal, Password atau Email salah!', 'Error');
             return view('auth.login');

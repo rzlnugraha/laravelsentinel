@@ -2,6 +2,7 @@
 
 Route::get('/', 'UsersController@index')->name('index');
 
+
 Route::group(['middleware' => 'sentinel'], function () {
     // Index awal login
     Route::get('home','UsersController@home')->name('home');
@@ -23,12 +24,15 @@ Route::group(['middleware' => ['sentinel','hasAdmin']], function () {
     // Artikel
     Route::resource('/article', 'ArticlesController')->except(['create']);
     Route::get('cari_artikel','ArticlesController@cari')->name('cariartikel');
+    Route::get('dashboard','Admin\DashboardAdminController@index')->name('dashboard');
 });
+
 
 Route::get('forgot-password','RemindersController@create')->name('reminders.create');
 Route::post('forgot-password','RemindersController@store')->name('reminders.store');
 Route::get('reset-password/{id}/{token}','RemindersController@edit')->name('reminders.edit');
 Route::post('reset-password/{id}/{token}','RemindersController@update')->name('reminders.update');
+
 
 Route::get('register','UsersController@signup')->name('register');
 Route::post('register','UsersController@signup_store')->name('register.store');

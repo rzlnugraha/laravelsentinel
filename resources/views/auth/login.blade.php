@@ -27,7 +27,7 @@
         <div class="row w-100">
           <div class="col-lg-4 mx-auto">
             <div class="auto-form-wrapper">
-              <form action="{{ route('login.store') }}" method="POST" autocomplete="off">
+              <form action="{{ route('login.store') }}" method="POST" autocomplete="on">
                 @csrf
                 <div class="form-group">
                   <label class="label">Email</label>

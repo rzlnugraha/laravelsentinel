@@ -17,13 +17,23 @@
             </div>
         </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ url('home') }}">
-                <i class="menu-icon mdi mdi-television"></i>
-                <span class="menu-title">Dashboard</span>
-            </a>
-        </li>
+        @if (Sentinel::getUser()->roles()->first()->slug == 'admin')
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('dashboard') }}">
+                    <i class="menu-icon mdi mdi-television"></i>
+                    <span class="menu-title">Dashboard</span>
+                </a>
+            </li>
+        @else
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('home') }}">
+                    <i class="menu-icon mdi mdi-television"></i>
+                    <span class="menu-title">Dashboard</span>
+                </a>
+            </li>
         @endif
+        @endif
+        {{-- Awal  jika sudah login --}}
         @if(Sentinel::check())
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('book.index') }}">
@@ -31,12 +41,14 @@
                     <span class="menu-title">Buku</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('article.index') }}">
-                    <i class="menu-icon mdi mdi-eye"></i>
-                    <span class="menu-title">Artikel</span>
-                </a>
-            </li>
+            @if (Sentinel::getUser()->roles()->first()->slug == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('article.index') }}">
+                        <i class="menu-icon mdi mdi-eye"></i>
+                        <span class="menu-title">Artikel</span>
+                    </a>
+                </li>
+            @endif
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('task.index') }}">
                     <i class="menu-icon mdi mdi-file-document-box"></i>
@@ -44,6 +56,7 @@
                 </a>
             </li>
         @else
+        {{-- Tutup jika sudah login  --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                     <i class="menu-icon mdi mdi-restart"></i>

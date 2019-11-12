@@ -97,10 +97,25 @@ class ArticlesController extends Controller
      */
     public function update(ArticleRequest $request, $id)
     {
+        $path = '/images/article/';
+
         $article = Article::findOrFail($id);
-        $article->update($request->all());
-        Alert::success('Berhasil merubah data','Update');
-        return redirect()->back();
+        if ($request->images) {
+            $foto = 'foto_artikel-' . str_random() . time() . '.' . $request->file('images')->getClientOriginalExtension();
+            $request->images->move(public_path($path), $foto);
+            $article->images = $foto;
+        }
+
+        $title = $request->get('title');
+        $content = $request->get('content');
+        $author = $request->get('author');
+
+        $article->title = $title;
+        $article->content = $content;
+        $article->author = $author;
+        $article->save();
+        Alert::success('Berhasil merubah artikel', 'Success');
+        return back();
     }
 
     /**

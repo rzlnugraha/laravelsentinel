@@ -34,13 +34,11 @@
             <div class="row text-gray d-md-flex d-none">
                 <div class="col-6 d-flex">
                     <div class="card" style="width: 18rem;">
-                    @if (!empty($article->images))
-                        <img src="{{ asset('images/article/'.$article->images) }}" class="card-img-top" alt="{{ $article->images }}">
-                    @endif
+                        <img src="{{ $article->img_article() }}" class="card-img-top" alt="{{ $article->img_article() }}">
                         <div class="card-body">
                         <h5 class="card-title">Foto Artikel</h5>
-                        <p class="card-text">{{ $article->images }}.</p>
-                        <a href="{{ asset('images/article/'.$article->images) }}" target="_blank" class="btn btn-primary">Klik disini untuk memperbesar</a>
+                        <p class="card-text">{{ empty($article->images) ? 'Foto default' : $article->images }}.</p>
+                        <a href="{{ $article->img_article() }}" target="_blank" class="btn btn-primary">Klik disini untuk memperbesar</a>
                     </div>
                     </div>
                 </div>

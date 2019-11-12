@@ -18,10 +18,10 @@ class Article extends Model
 
     public function img_article()
     {
-        if (file_exists(public_path() . 'images/article/' . $this->images) && $this->images != null) {
-            return 'images/article/'.$this->images;
+        if (file_exists(public_path() . '/images/article/' . $this->images) && $this->images != null) {
+            return '/images/article/'.$this->images;
         } else {
-            return url('/img/def-up.jpg');
+            return url('/img/afe.jpg');
         }
     }
 }

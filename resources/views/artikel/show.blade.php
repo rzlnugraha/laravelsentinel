@@ -54,7 +54,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <form class="form-rubah-artikel" action="{{ route('article.update',$article->id) }}" method="POST">
+            <form class="form-rubah-artikel" action="{{ route('article.update',$article->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf @method('PUT')
                 @include('artikel.form', [
                     'artikel' => new App\Article,

@@ -43,7 +43,23 @@ class ArticlesController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        Article::create($request->all());
+        $path = '/images/article/';
+
+        $article = new Article();
+        if ($request->images) {
+            $foto = 'foto_artikel-'.str_random().time().'.'.$request->file('images')->getClientOriginalExtension();
+            $request->images->move(public_path($path),$foto);
+            $article->images = $foto;
+        }
+
+        $title = $request->get('title');
+        $content = $request->get('content');
+        $author = $request->get('author');
+
+        $article->title = $title;
+        $article->content = $content;
+        $article->author = $author;
+        $article->save();
         Alert::success('Berhasil menambah artikel','Success');
         return back();
     }

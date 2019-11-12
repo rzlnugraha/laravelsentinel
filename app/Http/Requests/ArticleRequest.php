@@ -27,6 +27,7 @@ class ArticleRequest extends FormRequest
             'title' => 'required',
             'content' => 'required|min:5',
             'author' => 'required',
+            'images' => 'required|mimes:jpg,jpeg,png|max:2048'
         ];
     }
 
@@ -37,6 +38,9 @@ class ArticleRequest extends FormRequest
             'content.required' => 'Konten harus diisi',
             'content.min' => 'Minimal 5',
             'author.required' => 'Pengarang harus diisi',
+            'images.required' => 'Harus pake foto',
+            'images.mimes' => 'Harus jpg, jpeg, png',
+            'images.max' => 'Maximal 2 MB',
         ];
     }
 }

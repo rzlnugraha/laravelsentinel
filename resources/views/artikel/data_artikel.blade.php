@@ -21,17 +21,32 @@
         </div>
         <div class="row text-gray d-md-flex d-none">
             <div class="col-6 d-flex">
-            @if (!empty($article->created_at != $article->updated_at))
-            <small class="mb-0 mr-2 text-muted text-muted">Dirubah :</small>
-            <small class="Last-responded mr-2 mb-0 text-muted text-muted">{{ $ada = empty($article->updated_at) ? 'Di buat pake seeder' : $article->updated_at->diffForHumans() }}</small>
-            @else
-            <small class="mb-0 mr-2 text-muted text-muted">Belum pernah dirubah :</small>
-            <small class="Last-responded mr-2 mb-0 text-muted text-muted">{{ $ada = empty($article->updated_at) ? 'Di buat pake seeder' : $article->updated_at->diffForHumans() }}</small>
-            @endif
+                @if (!empty($article->created_at != $article->updated_at))
+                <small class="mb-0 mr-2 text-muted text-muted">Dirubah :</small>
+                <small class="Last-responded mr-2 mb-0 text-muted text-muted">{{ $ada = empty($article->updated_at) ? 'Di buat pake seeder' : $article->updated_at->diffForHumans() }}</small>
+                @else
+                <small class="mb-0 mr-2 text-muted text-muted">Belum pernah dirubah :</small>
+                <small class="Last-responded mr-2 mb-0 text-muted text-muted">{{ $ada = empty($article->updated_at) ? 'Di buat pake seeder' : $article->updated_at->diffForHumans() }}</small>
+                @endif
             </div>
         </div>
-
-        </div>
+        <center>
+            <div class="row text-gray d-md-flex d-none">
+                <div class="col-6 d-flex">
+                    <div class="card" style="width: 18rem;">
+                    @if (!empty($article->images))
+                        <img src="{{ asset('images/article/'.$article->images) }}" class="card-img-top" alt="{{ $article->images }}">
+                    @endif
+                        <div class="card-body">
+                        <h5 class="card-title">Foto Artikel</h5>
+                        <p class="card-text">{{ $article->images }}.</p>
+                        <a href="{{ asset('images/article/'.$article->images) }}" target="_blank" class="btn btn-primary">Klik disini untuk memperbesar</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </div>
         <div class="ticket-actions col-md-2">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#exampleModal">
                 <a class="mdi mdi-pencil" title="Edit Data"> Edit</a>

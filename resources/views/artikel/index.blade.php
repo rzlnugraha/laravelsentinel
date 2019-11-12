@@ -43,7 +43,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="{{ route('article.store') }}" method="post">
+        <form action="{{ route('article.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             @include('artikel.form', [
                 'article' => new App\Article,

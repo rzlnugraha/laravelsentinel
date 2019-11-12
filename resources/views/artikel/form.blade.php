@@ -14,6 +14,11 @@
     <input type="text" class="form-control {{ $errors->has('author') ? ' is-invalid' : ''}}" id="author" placeholder="Nama Penerbit" name="author" value="{{ old('author') ?? $article->author }}">
     {!! $errors->first('author','<span class="invalid-feedback">:message</span>') !!}
 </div>
+<div class="form-group">
+    <label for="foto">Foto</label>
+    <input type="file" name="images" id="foto" class="form-control {{ $errors->has('images') ? ' is-invalid' : '' }}">
+    {!! $errors->first('images','<span class="invalid-feedback">:message</span>') !!}
+</div>
 <div class="modal-footer">
     <button type="{{ $type }}" class="btn btn-primary" id="button-edit-artikel">{{ $button }}</button>
 </div>

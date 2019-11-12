@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Sentinel;
 use Alert, DB;
 use App\Http\Requests\UserRequest;
+use App\Jobs\JobKedua;
 
 use Illuminate\Http\Request;
 
@@ -42,6 +43,7 @@ class UsersController extends Controller
             $user->roles()->attach($role_id);
             Alert::success('Berhasil mendaftar','Success');
             DB::commit();
+            JobKedua::dispatch($user);
         } catch (\Throwable $errors) {
             DB::rollback();
             Alert::error($errors, 'Error');

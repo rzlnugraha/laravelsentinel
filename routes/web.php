@@ -2,6 +2,7 @@
 
 Route::get('/', 'UsersController@index')->name('index');
 
+Route::get('/testjob', 'HomeController@tesJob')->name('tesjob');
 
 Route::group(['middleware' => 'sentinel'], function () {
     // Index awal login
